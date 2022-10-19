@@ -28,14 +28,14 @@ def bfs(y,x):
     rs = 1 # 전체 크기 결과 (1로 이어진 크기)
     q = [(y,x)] # 큐
     while q:
-        ey, ex = q.pop()
-        for k in range(4):
+        ey, ex = q.pop() # 꺼낸 y,x
+        for k in range(4): # 4방향 체크 (꺼낸 y,x에서 우하좌상으로 체크)
             ny = ey + dy[k]
             nx = ex + dx[k]
             if 0<=ny<n and 0<=nx<m: # 맵 범위에서 벗어나지 않도록 처리
                 if map[ny][nx] == 1 and chk[ny][nx] == False: # 맵이 1이면서 방문한 적 없는
                     rs += 1
-                    chk[ny][nx] = True
+                    chk[ny][nx] = True # 방문 체크(4방향 체크한 곳)
                     q.append((ny,nx))
     return rs
 
@@ -44,7 +44,7 @@ maxv = 0 # 최고값 갱신을 위한 변수
 for j in range(n):
     for i in range(m):
         if map[j][i] == 1 and chk[j][i] == False:
-            chk[j][i] = True
+            chk[j][i] = True # 방문 체크(한 번씩 체크)
             cnt += 1
             maxv = max(maxv, bfs(j,i))
 print(cnt)
