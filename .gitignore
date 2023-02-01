@@ -305,5 +305,4 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/windows,python,pycharm
 
 # 추가
-연습/
 .idea/*
