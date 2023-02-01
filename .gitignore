@@ -306,3 +306,6 @@ $RECYCLE.BIN/
 
 # 추가
 .idea/*
+.idea
+.idea/misc.xml
+*.iml
