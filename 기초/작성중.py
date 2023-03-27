@@ -1,18 +1,23 @@
-from fractions import Fraction
-def solution(numer1, denom1, numer2, denom2):
-    return Fraction(numer1, denom1) + Fraction(numer2, denom2)
+# from fractions import Fraction
+# def solution(numer1, denom1, numer2, denom2):
+#     return Fraction(numer1, denom1) + Fraction(numer2, denom2)
+def solution(n):
+    return sum(int(i) for i in str(n))
 
-print(solution(1,2,3,4))
+print(solution(1234))
 
-"""
-def solution(s1, s2):
-    return len(set(s1)&set(s2));
+def re(i):
+    if i is None or i == "": return re(i)
+    return i
+def test():
+    ios = ""
+    if ios is None or ios == "":
+        print("ios는 널이다.")
+    else:
+        print("걸러내지 못함")
+    # ---
+    array = ["a", "", "b", ""]
+    for i in array:
+        print(re(i))
 
-   
-def solution(numer1, denom1, numer2, denom2):
-    answer = []
-    return answer
-
-print(solution(1,2,3,4))
-"""
-
+test()
