@@ -4,8 +4,8 @@
 
 def solution(genres, plays):
     playDict = {} # 고유 번호와 재생 수 {0: 500, 1: 600, 2: 150, 3: 800, 4: 2500}
-    genreDict = {} # 고유 번호와 장르 {0: classic, 1: pop ...}
-    genrePlay = {} # 장르별 재생 수 {classic: 1450, pop: 3100}
+    genreDict = {} # 고유 번호와 장르 {'classic': [0, 2, 3], 'pop': [1, 4]}
+    genrePlay = {} # 장르별 재생 수 {'classic': 1450, 'pop': 3100}
     for i in range(len(genres)): # 초기화
         genre = genres[i] # 고유번호
         play = plays[i] # 플레이수
@@ -17,14 +17,12 @@ def solution(genres, plays):
             genreDict[genre].append(i) # 기존에 추가
             genrePlay[genre] += play # 장르별 재생 수 누적
     # 장르 정렬 (재생 수 기준)
-    sortedGenre = sorted(genrePlay, key=lambda x: genrePlay[x], reverse=True)
+    sortedGenre = sorted(genrePlay, key=lambda x: genrePlay[x], reverse=True) # ['pop', 'classic']
     # 각 장르에서 가장 많이 재생된 노래 2개씩 answer에 추가
     answer = []
     for genre in sortedGenre:
         songs = genreDict[genre]
-        # print(songs)
-        songs = sorted(songs, key=lambda x: (-playDict[x], x)) # 오름차순
-        # print(songs)
+        songs = sorted(songs, key=lambda x: (-playDict[x], x)) # 오름차순 [3, 0, 2]
         answer += [x for x in songs[:2]] # 2개까지만
     return answer
 
