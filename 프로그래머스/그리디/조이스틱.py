@@ -10,7 +10,9 @@ def solution(name):
         next = i + 1 # A반복 체크
         while next < len(name) and name[next] == 'A':
             next += 1
-        move = min([move, 2 * i + len(name) - next, i + 2 * (len(name) - next)])
+        left_search = 2 * i + len(name) - next
+        right_search = i + 2 * (len(name) - next)
+        move = min([move, left_search, right_search])
     return answer + move
 
 print(solution("JEROEN")) #56
@@ -18,4 +20,7 @@ print(solution("JAN")) #23
 print(solution("ABAA")) #2
 print(solution("BCAAABCD")) #14
 
+"""
 
+
+"""
