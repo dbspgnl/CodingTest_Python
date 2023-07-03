@@ -4,7 +4,7 @@
 from collections import deque
 def solution(rectangle, characterX, characterY, itemX, itemY):
     answer = 0
-    size = 50*2
+    size = (50*2) +2 # 맵 두배에 경계선 두배
     maps = [[-1] * size for i in range(size)]
     visited = [[1] * size for i in range(size)]
     dx = [1,0,-1,0]
