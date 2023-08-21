@@ -1,4 +1,5 @@
 # n개의 정점, 시작점 s, 도착점a,b 가격 are
+# 플로이드 워셜 방법
 import sys
 def solution(n, s, a, b, fares):
     inf = sys.maxsize
