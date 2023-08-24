@@ -5,34 +5,34 @@ def solution(n, s, a, b, fares):
     inf = float('INF')
     answer = inf
     graph = [[] for _ in range(n + 1)]
-    dist = [[]]
+    result = [[]]
 
     # 다익스트라
     def dijkstra(start):
-        res = [inf for _ in range(n+1)]
-        res[start] = 0
-        q = []
-        heapq.heappush(q, (res[start], start)) # 노선과 가중치
-        while q:
-            result_x, x = heapq.heappop(q)
-            for nn, nw in graph[x]:
-                if res[nn] > result_x + nw:
-                    res[nn] = result_x + nw
-                    heapq.heappush(q, ([res[nn], nn]))
-        return res
+        dist = [inf for _ in range(n+1)]
+        dist[start] = 0
+        heap = []
+        heapq.heappush(heap, (dist[start], start))
+        while heap:
+            ew, ev = heapq.heappop(heap)
+            for nw, nv in graph[ev]:
+                if dist[nv] > ew + nw:
+                    dist[nv] = ew + nw
+                    heapq.heappush(heap, [dist[nv], nv])
+        return dist
 
     # 그래프 처리
-    for a,b,w in fares:
-        graph[a].append([b,w])
-        graph[b].append([a,w])
+    for node1,node2,w in fares:
+        graph[node1].append([w,node2])
+        graph[node2].append([w,node1])
 
     # 수행
     for i in range(1, n+1):
-        dist.append(dijkstra(i))
+        result.append(dijkstra(i))
 
     # 결과
     for i in range(1, n+1):
-        answer = min(answer, dist[s][i] + dist[i][a] + dist[i][b])
+        answer = min(answer, result[s][i] + result[i][a] + result[i][b])
     return answer
 
 print(solution(6, 4, 6, 2,
